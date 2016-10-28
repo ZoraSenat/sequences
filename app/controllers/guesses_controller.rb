@@ -6,24 +6,22 @@ class  GuessesController < ApplicationController
     g.first_num = params["first_number"]
     g.second_num = params["second_number"]
     g.third_num = params["third_number"]
-    g.save
+    if g.first_num != nil
+      g.save
+    else
+
+    end
 
     @list = Guess.all
-    # store numbers in db
-    #
-    # if @first_number.to_i < @second_number.to_i && @second_number.to_i < @third_number.to_i
-    #   @response = "Yes!"
-    # else
-    #   @response = "No."
 
-  render("guesses/index.html.erb")
-end
+    render("guesses/index.html.erb")
+  end
 
 
-def answer
-  # Parameters: {"rule"=>"TESTING"}
+  def answer
+    # Parameters: {"rule"=>"TESTING"}
 
-  @user_answer = params["rule"]
+    @user_answer = params["rule"]
 
-end
+  end
 end
